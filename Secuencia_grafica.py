@@ -2,6 +2,9 @@
 # Integrantes: Paula Núñez e Isabella Arrieta
 "Programar (preferiblemente en Python) el algoritmo obtenido del teorema de Havel-Hakimi."
 
+import networkx as nx
+import matplotlib.pyplot as plt
+
 print("\nBienvenidx")
 continuar= True
 while continuar == True: 
@@ -49,6 +52,10 @@ while continuar == True:
         if Todos_Cero:
             grafico = True
             print("La secuencia ", aux, " es un grafico")
+            G = nx.configuration_model(aux)
+            G = nx.Graph(G)
+            nx.draw_networkx(G)
+            plt.show()
             secuencia = []
     print("Desea continuar? 1.Si 2.No")
     op=int(input("-> "))
