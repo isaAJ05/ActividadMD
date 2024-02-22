@@ -16,36 +16,41 @@ while continuar == True:
     secuencia.sort(reverse=True)
     print("La secuencia ingresada es: ", secuencia)
     grafico = True
+    Negativo = False
     aux = secuencia[:]
-    while secuencia != None:
-        
+    Todos_Cero= False
+   
+    while grafico==True and Todos_Cero== False and secuencia!=[]:
         secuencia.sort(reverse=True) # organiza
+        print(secuencia)
         primer_elemento = secuencia[0] # toma el primer elemento
         secuencia.pop(0)
-       
+        if primer_elemento > len(secuencia):
+            print("La secuencia ", aux, " no es un grafico")
+            grafico = False
+            break
         for i in range(primer_elemento):
             secuencia[i]-=1
-            if secuencia[i]!=None:
-             if secuencia[i]<=-1:
-                print("La secuencia no es un grafico")
-                secuencia = None
+            if secuencia[i] <0:
+                print(secuencia)
+                print("La secuencia ", aux, " no es un grafico")
                 grafico = False
-        print (secuencia)
-        Todos_Cero= True
-        for i in range(len(secuencia)):
-            if secuencia[i]>0:
+                break
+        if grafico == False:
+            break
+        print(secuencia)
+        elementos=0
+        for j in range(len(secuencia)):
+            if secuencia[j] > 0:
                 Todos_Cero= False
+            if secuencia[j] == 0:
+                elementos+=1
+        if elementos == len(secuencia) or secuencia == []:
+            Todos_Cero = True
         if Todos_Cero:
             grafico = True
             print("La secuencia ", aux, " es un grafico")
-            secuencia = None
-        
-            
-
-        
-
-    
-  
+            secuencia = []
 
     print("Desea continuar? 1.Si 2.No")
     op=int(input("-> "))
