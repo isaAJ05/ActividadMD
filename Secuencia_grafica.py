@@ -25,7 +25,7 @@ while continuar == True:
         primer_vertice = secuencia[0] # toma el primer vertice
         secuencia.pop(0) # elimina el primer vertice
         if primer_vertice > len(secuencia): #Verificar si el primer vertice es mayor que la longitud de la secuencia
-            print("La secuencia ", aux, " no es un grafico")
+            print("La secuencia ", aux, " no es un grafico, cantidad insuficiente para el vertice 1")
             grafico = False
             break
         for i in range(primer_vertice):
