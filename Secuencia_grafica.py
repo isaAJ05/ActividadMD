@@ -5,6 +5,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 
+
 print("\nBienvenidx")
 continuar= True
 while continuar == True: 
@@ -13,7 +14,7 @@ while continuar == True:
     aux = []
     i=0
     while i<n:
-        nodo = int(input(f"Ingrese el nodo {i + 1}: "))
+        nodo = int(input(f"Ingrese el grado del nodo {i + 1}: "))
         secuencia.append(nodo)
         i+=1    
     secuencia.sort(reverse=True) 
@@ -52,15 +53,16 @@ while continuar == True:
         if Todos_Cero:
             grafico = True
             print("La secuencia ", aux, " es un grafico")
-            G = nx.configuration_model(aux)
-            G = nx.Graph(G)
-            nx.draw_networkx(G)
-            plt.show()
+            G = nx.havel_hakimi_graph(aux)  # Generar el grafo simple G, dada una secuencia d, con el algoritmo H-H
+            pos = nx.random_layout(G)  # Asignación del atributo 'posición' (pos) para posicionar los vértices en forma random
+            nx.draw_networkx_nodes(G, pos, node_size=50)  # Dibujar solo los vértices del Grafo G con los atributos especificados
+            nx.draw_networkx_edges(G, pos, width=0.5)  # Dibujar solo las aristas del Grafo G con los atributos especificados
+            plt.axis("equal")  # Redimensionar los ejes a longitudes iguales
+            plt.show()  # Mostrar el grado d-regular por pantalla
+            
             secuencia = []
-    print("Desea continuar? 1.Si 2.No")
-    op=int(input("-> "))
     while op!= 1 and op!= 2:
-        print("Ingrsese una opción valida 1.Si 2.No")
+        print("Ingrese una opción valida 1.Si 2.No")
         op=int(input("-> "))
     if op==2:
         print("¡Muchas gracias por implementar el programa!")
@@ -68,4 +70,5 @@ while continuar == True:
     else:
         continuar= True
         print("*************************************************************\n")
-        
+
+    
