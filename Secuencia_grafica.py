@@ -61,6 +61,8 @@ while continuar == True:
             plt.show()  # Mostrar el grado d-regular por pantalla
             
             secuencia = []
+    print("Desea continuar? 1.Si 2.No")
+    op=int(input("-> "))
     while op!= 1 and op!= 2:
         print("Ingrese una opción valida 1.Si 2.No")
         op=int(input("-> "))
